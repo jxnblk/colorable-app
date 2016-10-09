@@ -1,0 +1,22 @@
+<svg
+  version='1.1'
+  xmlns='http://www.w3.org/2000/svg'
+  viewBox='0 0 512 288'
+  width='512'
+  height='288'>
+  <defs>
+    <style>text{
+      font-family: 'SF UI Display', -apple-system, sans-serif;
+      font-weight: 600;
+      font-size: 192px;
+    }</style>
+  </defs>
+  <rect width='512' height='288' fill='#fff' />
+  <text x='256' y='198' text-anchor='middle'>
+    Aa
+  </text>
+  <!--
+  <path d='M0 144 H512' fill='none' stroke='rgba(255, 0,0,.5)' />
+  <path d='M256 0 V288' fill='none' stroke='rgba(255, 0,0,.5)' />
+  -->
+</svg>

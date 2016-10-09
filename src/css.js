@@ -28,5 +28,5 @@ input[type=range]:focus::-moz-range-thumb {
 }
 `
 
-export default css
+module.exports = css
 

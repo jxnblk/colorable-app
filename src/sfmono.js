@@ -13,5 +13,5 @@ const css = `
 .sfmono { font-family: SFMono, monospace }
 `
 
-export default css
+module.exports = css
 

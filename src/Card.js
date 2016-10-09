@@ -1,7 +1,9 @@
 
 import React from 'react'
-import { Box } from 'reflexbox'
+import { Flex, Box } from 'reflexbox'
+import { Space } from 'rebass'
 import round from 'lodash/round'
+import TweetButton from './TweetButton'
 
 const Card = ({
   contrast,
@@ -15,9 +17,15 @@ const Card = ({
           {' ' + round(contrast, 2)}
         </span>
       </div>
-      <div className='h2 xh1 bold'>
-        {level}
-      </div>
+      <Flex align='center'>
+        <div className='h2 xh1 bold'>
+          {level}
+        </div>
+        <Space auto />
+        <TweetButton
+          text='Colorable: color contrast tester'
+        />
+      </Flex>
     </Box>
   )
 }

@@ -1,15 +1,17 @@
 {
-  "name": "color-console",
+  "name": "colorable-beta",
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "build": "webpack -p",
-    "start": "webpack-dev-server"
+    "build": "NODE_ENV=production webpack -p",
+    "dev": "webpack-dev-server",
+    "start": "./node_modules/micro/bin/micro -p 3000"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Brent Jackson",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
@@ -24,12 +26,16 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^4.0.0-alpha.4",
-    "rebass": "^0.4.0-beta.7",
+    "rebass": "^0.4.0-beta.8",
     "reflexbox": "^2.2.2",
     "reline": "^1.0.0-beta.3",
     "static-site-generator-webpack-plugin": "^3.0.0",
     "type-system": "^1.0.0-beta.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "micro": "^6.1.0",
+    "pngjs": "^3.0.0"
   }
 }

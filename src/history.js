@@ -24,7 +24,7 @@ const createParams = keys => parts => {
 export const getParams = () => {
   const { pathname } = history.location
   const keys = []
-  const reg = pathToRegexp('/:text/:base', keys)
+  const reg = pathToRegexp('/:text/:base/:format?', keys)
   const parts = reg.exec(pathname)
   const params = createParams(keys)(parts)
 

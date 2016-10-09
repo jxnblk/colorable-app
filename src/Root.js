@@ -5,11 +5,12 @@ import css from 'type-system'
 import sfmono from './sfmono'
 import basecss from './css'
 
+// For dev only
 const Root = () => {
   return (
     <html>
       <meta charSet='utf-8' />
-      <title>Color</title>
+      <title>Colorable</title>
       <meta name='viewport' content='width=device-width,initial-scale=1' />
       <style dangerouslySetInnerHTML={{ __html: css }} />
       <style dangerouslySetInnerHTML={{ __html: sfmono }} />

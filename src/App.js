@@ -14,6 +14,7 @@ import {
 } from './history'
 import Card from './Card'
 import Controls from './Controls'
+import Footer from './Footer'
 
 // base: '#fff9b0'
 
@@ -120,6 +121,7 @@ class App extends React.Component {
           {...this.state}
           onChange={this.update}
         />
+        <Footer />
       </div>
     )
   }
