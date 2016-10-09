@@ -1,0 +1,35 @@
+{
+  "name": "color-console",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "start": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "chroma-js": "^1.2.1",
+    "css-loader": "^0.25.0",
+    "history": "^4.3.0",
+    "lodash": "^4.16.4",
+    "path-to-regexp": "^1.6.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^4.0.0-alpha.4",
+    "rebass": "^0.4.0-beta.7",
+    "reflexbox": "^2.2.2",
+    "reline": "^1.0.0-beta.3",
+    "static-site-generator-webpack-plugin": "^3.0.0",
+    "type-system": "^1.0.0-beta.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
