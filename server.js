@@ -4,10 +4,11 @@ const zlib = require('zlib')
 const path = require('path')
 const React = require('react')
 const chroma = require('chroma-js')
-const { renderToStaticMarkup } = require('react-dom/server')
+const { renderToString, renderToStaticMarkup } = require('react-dom/server')
 const url = require('url')
 const pathToRegexp = require('path-to-regexp')
 const Html = require('./Html')
+const App = require('./client/App').default
 const image = require('./image')
 
 const createParams = keys => parts => {
@@ -42,16 +43,29 @@ const getBundle = (res) => {
   stream.pipe(gzip).pipe(res)
 }
 
+const robots = (res) => {
+  res.end(`User-agent: Twitterbot
+Disallow:`)
+}
+
 module.exports = function (req, res) {
   const params = getParams(req) || {}
 
   if (/bundle\.js$/.test(req.url)) {
     getBundle(res)
     return
-  } else if (params && params.format === 'png') {
+  } else if (/favicon\.png/.test(req.url)) {
+    image(Object.assign({}, params, { res, type: 'favicon' }))
+  } else if (params && /png$/.test(params.format)) {
     image(Object.assign({}, params, { res }))
     return
+    return
+  } else if (/robots/.test(req.url)) {
+    robots(res)
+    return
   } else {
+    const app = renderToString(React.createElement(App, params))
+    params.app = app
     const root = renderToStaticMarkup(React.createElement(Html, params))
     const html = `<!DOCTYPE html>${root}`
 

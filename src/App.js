@@ -1,5 +1,6 @@
 
 import React from 'react'
+import chroma from 'chroma-js'
 import {
   hexToHsl,
   hslToHex,
@@ -14,6 +15,7 @@ import {
 } from './history'
 import Card from './Card'
 import Controls from './Controls'
+import Demo from './Demo'
 import Footer from './Footer'
 
 // base: '#fff9b0'
@@ -26,9 +28,14 @@ const getHighlightCss = (state) => {
 }
 
 class App extends React.Component {
-  state = {
-    text: [0, 0, 0],
-    base: [55, 1, .845]
+  constructor (props) {
+    super()
+    const text = props.text ? chroma(props.text).hsl() : [0, 0, 0]
+    const base = props.base ? chroma(props.base).hsl() : [55, 1, .845]
+    this.state = {
+      text,
+      base
+    }
   }
 
   update = obj => this.setState(obj, state => {
@@ -121,6 +128,7 @@ class App extends React.Component {
           {...this.state}
           onChange={this.update}
         />
+        <Demo />
         <Footer />
       </div>
     )

@@ -5,9 +5,11 @@ import ReactDOMServer from 'react-dom/server'
 
 import Root from './Root'
 import App from './App'
+import { getParams } from './history'
 
 if (typeof document !== 'undefined') {
-  ReactDOM.render(<App />, app)
+  const params = getParams()
+  ReactDOM.render(<App {...params} />, app)
 }
 
 module.exports = (locals, callback) => {

@@ -5,13 +5,14 @@ const PNG = require('pngjs').PNG
 
 const image = ({
   res,
-  text,
-  base
+  text = '000',
+  base = 'fff8b0',
+  type = 'card'
 }) => {
   const scale = chroma.scale([ text, base ])
 
   res.setHeader('Content-Type', 'image/png')
-  fs.createReadStream(__dirname + '/images/card.png')
+  fs.createReadStream(__dirname + `/images/${type}.png`)
     .pipe(new PNG())
     .on('parsed', function () {
       for (let y = 0; y < this.height; y++) {

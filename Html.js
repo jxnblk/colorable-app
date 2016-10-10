@@ -10,7 +10,8 @@ const typesys = fs.readFileSync('./node_modules/type-system/type-system.css', 'u
 
 const Html = ({
   text = '000000',
-  base = 'fff9b0'
+  base = 'fff9b0',
+  app = ''
 }) => {
   const contrast = chroma.contrast('#' + text, '#' + base)
   return (
@@ -26,6 +27,11 @@ const Html = ({
           name: 'description',
           content: 'Color contrast tester'
         }),
+        h('link', {
+          rel: 'icon',
+          type: 'image/png',
+          href: `/${text}/${base}/favicon.png`
+        }),
         ...createCard({ text, base, contrast }),
         h('style', {
           dangerouslySetInnerHTML: {
@@ -34,7 +40,12 @@ const Html = ({
         })
       ),
       h('body', {},
-        h('div', { id: 'app' }, `Aa ${contrast}`),
+        h('div', {
+          id: 'app',
+          dangerouslySetInnerHTML: {
+            __html: app
+          }
+        }),
         h('script', { src: '/bundle.js' }),
         h('script', {
           dangerouslySetInnerHTML: {
@@ -70,7 +81,7 @@ const createCard = ({
     }),
     h('meta', {
       name: 'twitter:image',
-      content: `/${text}/${base}/png`
+      content: `https://colorable.jxnblk.com/${text}/${base}/card.png`
       // 'http://jxnblk.s3.amazonaws.com/Aa.png'
     }),
   ]

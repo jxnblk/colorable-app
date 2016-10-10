@@ -5,7 +5,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack -p",
+    "build": "NODE_ENV=production npm run client && webpack -p",
+    "client": "mkdir -p client && babel src --out-dir client",
     "dev": "webpack-dev-server",
     "start": "./node_modules/micro/bin/micro -p 3000"
   },
@@ -35,6 +36,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "babel-cli": "^6.16.0",
     "micro": "^6.1.0",
     "pngjs": "^3.0.0"
   }
