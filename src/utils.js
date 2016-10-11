@@ -19,6 +19,8 @@ export const isHsl = hsl => {
   }
 }
 
+export const isDark = hsl => chroma.hsl(hsl).luminance() < .5
+
 export const hexToHsl = hex => isHex(hex) ? chroma(hex).hsl() : null
 
 export const hslToHex = hsl => isHsl(hsl) ? chroma.hsl(hsl).hex() : '#808080'
