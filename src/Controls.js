@@ -7,7 +7,8 @@ import ResponsiveTabs from './ResponsiveTabs'
 const Controls = ({
   text,
   base,
-  onChange
+  onChange,
+  className
 }) => {
   const labels = [
     'Text',
@@ -21,7 +22,7 @@ const Controls = ({
   }
 
   return (
-    <div style={sx}>
+    <div style={sx} className={className}>
       <ResponsiveTabs
         tabLabels={labels}>
         <ColorInput

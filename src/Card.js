@@ -3,6 +3,7 @@ import React from 'react'
 import { Flex, Box } from 'reflexbox'
 import { Space } from 'rebass'
 import round from 'lodash/round'
+import { format } from 'd3-format'
 import TweetButton from './TweetButton'
 
 const Card = ({
@@ -10,23 +11,24 @@ const Card = ({
   level
 }) => {
   return (
-    <Box mb={3}>
-      <div className='h1 xh0 xh00 bold'>
+    <Flex wrap
+      align='baseline'
+      mb={1}>
+      <div className='h1 xh0 xh00 bold nowrap'>
         Aa
         <span className='h1 xh0 sfmono'>
-          {' ' + round(contrast, 2)}
+          {' ' + format('.2f')(contrast)}
         </span>
+        <Space x={3} />
       </div>
-      <Flex align='center'>
-        <div className='h2 xh1 bold'>
-          {level}
-        </div>
-        <Space auto />
-        <TweetButton
-          text='Colorable: color contrast tester'
-        />
-      </Flex>
-    </Box>
+      <div className='h2 xh1 bold'>
+        {level}
+      </div>
+      <Space auto />
+      <TweetButton
+        text='Colorable: color contrast tester'
+      />
+    </Flex>
   )
 }
 

@@ -16,6 +16,7 @@ import {
 import Card from './Card'
 import Controls from './Controls'
 import Demo from './Demo'
+import Quote from './Quote'
 import Footer from './Footer'
 
 // base: '#fff9b0'
@@ -124,11 +125,15 @@ class App extends React.Component {
           contrast={contrast}
           level={level}
         />
-        <Controls
-          {...this.state}
-          onChange={this.update}
-        />
-        <Demo />
+        <div className='tall-flip'>
+          <Controls
+            {...this.state}
+            onChange={this.update}
+            className='tall-bottom'
+          />
+          <Demo className='tall-top' />
+        </div>
+        <Quote />
         <Footer />
       </div>
     )

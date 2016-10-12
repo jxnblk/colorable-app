@@ -24,8 +24,21 @@ input[type=range]:focus::-moz-range-thumb {
   box-shadow: 0 0 0 2px;
 }
 @media screen and (min-width: 64em) {
-  .xh00 { font-size: 9rem }
+  .xh00 { font-size: 12rem }
 }
+@media screen and (min-height: 48em) {
+  .tall-flip {
+    display: flex;
+    flex-direction: column;
+  }
+  .tall-flip .tall-top {
+    order: 0;
+  }
+  .tall-flip .tall-bottom {
+    order: 1;
+  }
+}
+.nowrap { white-space: nowrap }
 `
 
 module.exports = css
