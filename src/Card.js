@@ -5,6 +5,7 @@ import { Space } from 'rebass'
 import round from 'lodash/round'
 import { format } from 'd3-format'
 import TweetButton from './TweetButton'
+import Star from './Star'
 
 const Card = ({
   contrast,
@@ -25,6 +26,7 @@ const Card = ({
         {level}
       </div>
       <Space auto />
+      <Star />
       <TweetButton
         text='Colorable: color contrast tester'
       />

@@ -1,6 +1,8 @@
 
 import React from 'react'
 import chroma from 'chroma-js'
+import hello from 'hello-color'
+import throttle from 'lodash/throttle'
 import {
   hexToHsl,
   hslToHex,
@@ -19,8 +21,6 @@ import Demo from './Demo'
 import Quote from './Quote'
 import Footer from './Footer'
 
-// base: '#fff9b0'
-
 const getHighlightCss = (state) => {
   const text = hslToHex(state.text)
   const base = hslToHex(state.base)
@@ -28,11 +28,23 @@ const getHighlightCss = (state) => {
   return `::selection {${dec}} ::-moz-selection {${dec}}`
 }
 
+const log = throttle((state) => {
+  const text = hslToHex(state.text)
+  const base = hslToHex(state.base)
+  console.log(
+    '%c%s%c%s',
+    `padding:4px;color:${text};background-color:${base}`,
+    ' Aa ',
+    'color:black',
+    ' ' + text + ' ' + base
+  )
+}, 500)
+
 class App extends React.Component {
   constructor (props) {
     super()
-    const text = props.text ? chroma(props.text).hsl() : [0, 0, 0]
-    const base = props.base ? chroma(props.base).hsl() : [55, 1, .845]
+    const text = props.text ? chroma(props.text).hsl() : [200, 1, 0.2]
+    const base = props.base ? chroma(props.base).hsl() : [158, 1, .5]
     this.state = {
       text,
       base
@@ -41,7 +53,17 @@ class App extends React.Component {
 
   update = obj => this.setState(obj, state => {
     updatePath(this.state)
+    log(this.state)
   })
+
+  random = () => {
+    const base = chroma.random().hex()
+    const { color } = hello(base)
+    this.update({
+      base: hexToHsl(base),
+      text: hexToHsl(color)
+    })
+  }
 
   getChildContext () {
     const text = hslToHex(this.state.text)
@@ -94,7 +116,6 @@ class App extends React.Component {
     })
 
     history.listen(this.handlePopState.bind(this))
-    // window.addEventListener('popstate', this.handlePopState)
   }
 
   render () {
@@ -111,7 +132,8 @@ class App extends React.Component {
         minHeight: '100vh',
         padding: 48,
         color: hslToHex(text),
-        backgroundColor: hslToHex(base)
+        backgroundColor: hslToHex(base),
+        transition: 'background-color .1s ease-out'
       }
     }
 
@@ -129,6 +151,7 @@ class App extends React.Component {
           <Controls
             {...this.state}
             onChange={this.update}
+            random={this.random}
             className='tall-bottom'
           />
           <Demo className='tall-top' />

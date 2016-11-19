@@ -40,6 +40,11 @@ const BigInput = ({
           {...props}
           name={name}
           className='h1 xh0'
+          autoComplete='off'
+          autoComplete='off'
+          autoCorrect='off'
+          autoCapitalize='off'
+          spellCheck='off'
           style={sx.input}
         />
       </label>

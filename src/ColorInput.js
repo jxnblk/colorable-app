@@ -21,8 +21,18 @@ class ColorInput extends React.Component {
   handleHexChange = e => {
     const { name } = this.props
     const hsl = hexToHsl(e.target.value)
+    const { length } = e.target.value
     this.update(e.target.value)
-    if (e.target.value.length > 6 && isHsl(hsl)) {
+    if (length === 7 && isHsl(hsl)) {
+      this.props.onChange({ [name]: hsl })
+    }
+  }
+
+  handleHexBlur = e => {
+    const { name } = this.props
+    const hsl = hexToHsl(e.target.value)
+    const { length } = e.target.value
+    if ((length === 4 || length === 7) && isHsl(hsl)) {
       this.props.onChange({ [name]: hsl })
     }
   }
@@ -60,8 +70,9 @@ class ColorInput extends React.Component {
           name={name}
           label={label}
           value={hex}
-          spellCheck='off'
+          pattern='^#[0-9a-f]'
           onChange={this.handleHexChange}
+          onBlur={this.handleHexBlur}
         />
         <Slider
           name='hue'

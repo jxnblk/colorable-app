@@ -18,7 +18,7 @@ const Html = ({
     h('html', {},
       h('head', {},
         h('meta', { charSet: 'utf-8' }),
-        h('title', {}, 'Colorable beta'),
+        h('title', {}, 'Colorable'),
         h('meta', {
           name: 'viewport',
           content: 'width=device-width,initial-scale=1'
@@ -82,7 +82,6 @@ const createCard = ({
     h('meta', {
       name: 'twitter:image',
       content: `https://colorable.jxnblk.com/${text}/${base}/card.png`
-      // 'http://jxnblk.s3.amazonaws.com/Aa.png'
     }),
   ]
 }

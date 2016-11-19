@@ -1,13 +1,16 @@
 
 import React from 'react'
+import { Flex, Box } from 'reflexbox'
 import { isDark, getContrast } from './utils'
 import ColorInput from './ColorInput'
 import ResponsiveTabs from './ResponsiveTabs'
+import Button from './Button'
 
 const Controls = ({
   text,
   base,
   onChange,
+  random,
   className
 }) => {
   const labels = [
@@ -16,13 +19,22 @@ const Controls = ({
   ]
   const contrast = getContrast(text, base)
   const sx = {
-    color: contrast < 3
-      ? isDark(base) ? '#fff' : '#000'
-      : null
+    root: {
+      color: contrast < 3
+        ? isDark(base) ? '#fff' : '#000'
+        : null
+    }
+  }
+
+  const reverse = () => {
+    onChange({
+      text: base,
+      base: text
+    })
   }
 
   return (
-    <div style={sx} className={className}>
+    <div style={sx.root} className={className}>
       <ResponsiveTabs
         tabLabels={labels}>
         <ColorInput
@@ -38,6 +50,23 @@ const Controls = ({
           onChange={onChange}
         />
       </ResponsiveTabs>
+      <Flex py={2}>
+        <Button
+          text={text}
+          base={base}
+          contrast={contrast}
+          onClick={reverse}
+          children='Reverse'
+        />
+        <Box mr={1} />
+        <Button
+          text={text}
+          base={base}
+          contrast={contrast}
+          onClick={random}
+          children='Random'
+        />
+      </Flex>
     </div>
   )
 }
