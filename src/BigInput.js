@@ -18,7 +18,7 @@ const BigInput = ({
     input: {
       display: 'block',
       width: '100%',
-      fontFamily: 'SFMono, serif',
+      fontFamily: '"RobotoMono", Menlo, monospace',
       margin: 0,
       padding: 0,
       border: 0,

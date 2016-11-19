@@ -17,7 +17,7 @@ const Card = ({
       mb={1}>
       <div className='h1 xh0 xh00 bold nowrap'>
         Aa
-        <span className='h1 xh0 sfmono'>
+        <span className='h1 xh0 roboto'>
           {' ' + format('.2f')(contrast)}
         </span>
         <Space x={3} />

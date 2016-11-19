@@ -5,7 +5,7 @@ const h = React.createElement
 const chroma = require('chroma-js')
 const round = require('lodash/round')
 const css = require('./src/css')
-const sfmono = require('./src/sfmono')
+const robotomono = require('./src/roboto-mono')
 const typesys = fs.readFileSync('./node_modules/type-system/type-system.css', 'utf8')
 
 const Html = ({
@@ -35,7 +35,7 @@ const Html = ({
         ...createCard({ text, base, contrast }),
         h('style', {
           dangerouslySetInnerHTML: {
-            __html: typesys + sfmono + css
+            __html: typesys + robotomono + css
           }
         })
       ),

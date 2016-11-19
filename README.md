@@ -1,10 +1,9 @@
 
-- [x] Favicon
-- [x] twitter card meta tags
-- [x] image URL for twitter card
+# Colorable App
 
-- [x] Swap button
-- [x] Hello button
+https://colorable.jxnblk.com
 
-- [x] Console History
-- [ ] Victory Animation
+Color contrast checker web app for [Colorable](https://github.com/jxnblk/colorable)
+
+MIT License
+

@@ -8,8 +8,8 @@ const css = `
   font-style: normal;
   font-weight: 400;
 }
-.roboto { font-family: 'RobotoMono', serif }
+.roboto { font-family: 'RobotoMono', Menlo, monospace }
 `
 
-export default css
+module.exports = css
 
