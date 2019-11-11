@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "name": "colorable",
+  "alias": ["colorable.jxnblk.com", "colorable.now.sh"],
+  "scope": "jxnblk",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ]
+}

@@ -6,7 +6,6 @@ const chroma = require('chroma-js')
 const round = require('lodash/round')
 const css = require('./src/css')
 const robotomono = require('./src/roboto-mono')
-const typesys = fs.readFileSync('./node_modules/type-system/type-system.css', 'utf8')
 
 const Html = ({
   text = '000000',
@@ -35,7 +34,7 @@ const Html = ({
         ...createCard({ text, base, contrast }),
         h('style', {
           dangerouslySetInnerHTML: {
-            __html: typesys + robotomono + css
+            __html: css
           }
         })
       ),

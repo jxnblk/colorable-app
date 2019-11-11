@@ -8,7 +8,7 @@ const { renderToString, renderToStaticMarkup } = require('react-dom/server')
 const url = require('url')
 const pathToRegexp = require('path-to-regexp')
 const Html = require('./Html')
-const App = require('./client/App').default
+const App = require('./public/App').default
 const image = require('./image')
 
 const createParams = keys => parts => {
@@ -34,7 +34,7 @@ const getParams = (req) => {
 }
 
 const getBundle = (res) => {
-  const filename = path.join(process.cwd(), 'build/bundle.js')
+  const filename = path.join(process.cwd(), 'public/bundle.js')
   const stream = fs.createReadStream(filename)
   const gzip = zlib.createGzip()
 
@@ -51,7 +51,9 @@ Disallow:`)
 module.exports = function (req, res) {
   const params = getParams(req) || {}
 
+  console.log(params, req.url)
   if (/bundle\.js$/.test(req.url)) {
+    console.log('get bundle', req.url)
     getBundle(res)
     return
   } else if (/favicon\.png/.test(req.url)) {
