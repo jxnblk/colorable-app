@@ -51,7 +51,6 @@ Disallow:`)
 module.exports = function (req, res) {
   const params = getParams(req) || {}
 
-  console.log(params, req.url)
   if (/bundle\.js$/.test(req.url)) {
     console.log('get bundle', req.url)
     getBundle(res)
