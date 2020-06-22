@@ -1,18 +1,14 @@
 
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
-import CarbonAd from './CarbonAd'
 
 const Demo = ({ className }) => {
   return (
-    <Flex wrap my={1} className={className}>
-      <Box auto>
+    <Flex flexWrap='wrap' my={1} className={className}>
+      <Box flex='auto'>
         <p className='mx lh3'>
           Contrast is the difference in luminance or color that makes an object (or its representation in an image or display) distinguishable. In visual perception of the real world, contrast is determined by the difference in the color and brightness of the object and other objects within the same field of view.
         </p>
-      </Box>
-      <Box py={2}>
-        <CarbonAd />
       </Box>
     </Flex>
   )

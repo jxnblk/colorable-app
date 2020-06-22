@@ -1,9 +1,7 @@
-
 import React from 'react'
 import { Flex, Box } from 'reflexbox'
 import { isDark, getContrast } from './utils'
 import ColorInput from './ColorInput'
-import ResponsiveTabs from './ResponsiveTabs'
 import Button from './Button'
 
 const Controls = ({
@@ -35,21 +33,24 @@ const Controls = ({
 
   return (
     <div style={sx.root} className={className}>
-      <ResponsiveTabs
-        tabLabels={labels}>
-        <ColorInput
-          name='text'
-          label='Text'
-          value={text}
-          onChange={onChange}
-        />
-        <ColorInput
-          name='base'
-          label='Background'
-          value={base}
-          onChange={onChange}
-        />
-      </ResponsiveTabs>
+      <Flex mx={-2}>
+        <Box px={2}>
+          <ColorInput
+            name='text'
+            label='Text'
+            value={text}
+            onChange={onChange}
+          />
+        </Box>
+        <Box px={2}>
+          <ColorInput
+            name='base'
+            label='Background'
+            value={base}
+            onChange={onChange}
+          />
+        </Box>
+      </Flex>
       <Flex py={2}>
         <Button
           text={text}
