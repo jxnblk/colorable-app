@@ -2,12 +2,35 @@
 import React from 'react'
 import chroma from 'chroma-js'
 import round from 'lodash/round'
-import { Flex, Box } from 'reflexbox'
-import { Slider } from 'rebass'
+import { Box } from 'reflexbox'
+import { Label, Slider } from '@rebass/forms'
 import { hexToHsl, hslToHex, isHsl } from './utils'
 import BigInput from './BigInput'
 
 const nanH = h => isNaN(h) ? 0 : h
+
+const SliderInput = ({
+  label,
+  name,
+  ...props
+}) =>
+  <Box mb={4}>
+    <Label htmlFor={name}
+      sx={{
+        fontWeight: 'bold',
+        fontSize: 14,
+        mb: 1,
+      }}>
+      {label || name}
+    </Label>
+    <Slider
+      name={name}
+      {...props}
+      sx={{
+        bg: 'rgba(0, 0, 0, .125)',
+      }}
+    />
+  </Box>
 
 class ColorInput extends React.Component {
   constructor (props) {
@@ -74,14 +97,14 @@ class ColorInput extends React.Component {
           onChange={this.handleHexChange}
           onBlur={this.handleHexBlur}
         />
-        <Slider
+        <SliderInput
           name='hue'
           label={'Hue ' + Math.round(nanH(h)) + '°'}
           value={nanH(h)}
           max={360}
           pb={0}
           onChange={this.handleChange(0)} />
-        <Slider
+        <SliderInput
           name='saturation'
           label={'Saturation ' + round(s, 2)}
           value={s}
@@ -89,7 +112,7 @@ class ColorInput extends React.Component {
           max={1}
           pb={0}
           onChange={this.handleChange(1)} />
-        <Slider
+        <SliderInput
           name='lightness'
           label={'Lightness ' + round(l, 2)}
           value={l}

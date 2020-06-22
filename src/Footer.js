@@ -1,20 +1,29 @@
 
 import React from 'react'
-import { Block, NavItem } from 'rebass'
+import { Box, Link } from 'rebass'
 
 const Footer = () => {
   return (
     <footer>
-      <Block py={4} mt={4}>
-        <NavItem
+      <Box py={4} mt={4}>
+        <Link
           href='https://github.com/jxnblk/colorable'
-          px={0}
+          sx={{
+            color: 'inherit',
+            fontSize: 14,
+            fontWeight: 'bold',
+            mr: 2,
+          }}
           children='GitHub' />
-        <NavItem
+        <Link
           href='http://jxnblk.com'
-          px={0}
+          sx={{
+            color: 'inherit',
+            fontSize: 14,
+            fontWeight: 'bold',
+          }}
           children='Made by Jxnblk' />
-      </Block>
+      </Box>
     </footer>
   )
 }

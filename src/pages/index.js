@@ -1,5 +1,5 @@
-
 import React from 'react'
+import PropTypes from 'prop-types'
 import chroma from 'chroma-js'
 import hello from 'hello-color'
 import throttle from 'lodash/throttle'
@@ -9,17 +9,19 @@ import {
   getContrast,
   getLevel,
   mix
-} from './utils'
+} from '../utils'
 import {
   history,
   getParams,
   updatePath
-} from './history'
-import Card from './Card'
-import Controls from './Controls'
-import Demo from './Demo'
-import Quote from './Quote'
-import Footer from './Footer'
+} from '../history'
+import Card from '../Card'
+import Controls from '../Controls'
+import Demo from '../Demo'
+import Quote from '../Quote'
+import Footer from '../Footer'
+import { Helmet } from 'react-helmet'
+import css from '../css'
 
 const getHighlightCss = (state) => {
   const text = hslToHex(state.text)
@@ -141,6 +143,19 @@ class App extends React.Component {
 
     return (
       <div style={sx.root}>
+        <Helmet>
+          <title>Colorable</title>
+          <link rel='icon' type='image/png' href='/favicon.png' />
+          <link
+            href="https://unpkg.com/type-system@1.0.0-beta.2/type-system.css"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+            rel="stylesheet"
+          />
+        </Helmet>
+        <style dangerouslySetInnerHTML={{ __html: css }} />
         <style dangerouslySetInnerHTML={{ __html: highlightCss }} />
         <Card
           {...this.state}
@@ -164,8 +179,9 @@ class App extends React.Component {
 }
 
 App.childContextTypes = {
-  rebass: React.PropTypes.object
+  rebass: PropTypes.object
 }
 
 export default App
+
 
